@@ -1,0 +1,99 @@
+.build { display: flex; flex-direction: column; gap: 20px; }
+
+.build__head { display: flex; flex-direction: column; gap: 6px; }
+.build__head p { max-width: 54ch; font-size: 14.5px; margin-top: 4px; }
+
+.build__panel { padding: 20px; }
+
+.build__times {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.build__times label { display: block; }
+
+.build__hint { font-size: 12.5px; margin-top: 12px; }
+
+.build__tasks {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pick {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  border: 1px solid transparent;
+  background: var(--bg-sunken);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+.pick:hover { background: var(--active); }
+.pick.is-on { background: var(--accent-soft); border-color: var(--accent); }
+
+.pick input {
+  appearance: none;
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 1.8px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  transition: background 180ms var(--ease), border-color 180ms var(--ease);
+}
+.pick input:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.pick input:checked::after {
+  content: '';
+  width: 10px; height: 5px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.pick__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pick__title { font-size: 14.5px; font-weight: 620; }
+.pick__meta { font-size: 12px; }
+
+.build__sum {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 13.5px;
+  color: var(--text-2);
+}
+
+.build__result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.build__warn {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: var(--r-md);
+  background: color-mix(in srgb, var(--orange) 14%, transparent);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+@media (max-width: 720px) {
+  .build__times { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .build__result-head { flex-direction: column; align-items: stretch; }
+}

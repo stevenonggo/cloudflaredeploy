@@ -1,0 +1,103 @@
+.player {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.player__info { display: flex; flex-direction: column; min-width: 0; }
+.player__title {
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.player__artist { font-size: 13px; color: var(--text-2); }
+
+.player__scrub {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+.player__time { font-size: 11.5px; color: var(--text-2); min-width: 36px; }
+
+.scrubber {
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+.scrubber::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: var(--r-full);
+  background: linear-gradient(
+    to right,
+    var(--accent) var(--p, 0%),
+    var(--border) var(--p, 0%)
+  );
+}
+.scrubber::-webkit-slider-thumb {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
+  transition: transform 180ms var(--ease);
+}
+.scrubber:active::-webkit-slider-thumb { transform: scale(1.25); }
+.scrubber::-moz-range-track {
+  height: 5px;
+  border-radius: var(--r-full);
+  background: var(--border);
+}
+.scrubber::-moz-range-progress {
+  height: 5px;
+  border-radius: var(--r-full);
+  background: var(--accent);
+}
+.scrubber::-moz-range-thumb {
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+}
+
+.player__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.player__btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  transition: background 160ms ease, transform var(--dur) var(--ease);
+}
+.player__btn:hover { background: var(--hover); }
+.player__btn:active { transform: scale(0.9); }
+.player__btn--main {
+  background: var(--accent);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+}
+.player__btn--main:hover { background: var(--accent); filter: brightness(1.08); }
+
+/* single-row variant used inside the downbar */
+.player--compact {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 6px;
+}
+.player--compact .player__title { font-size: 13px; }
+.player--compact .player__artist { font-size: 11.5px; }

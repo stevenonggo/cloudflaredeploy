@@ -1,0 +1,112 @@
+.downbar {
+  grid-area: downbar;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--downbar-h);
+  padding: 0 14px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: content-box;
+  background: var(--surface);
+  backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid var(--border);
+}
+
+.downbar__music {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  width: 264px;
+  flex: none;
+}
+
+.downbar__track {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.downbar__song {
+  font-size: 13px;
+  font-weight: 650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.downbar__artist {
+  font-size: 11px;
+  color: var(--text-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.downbar__bar {
+  display: block;
+  height: 3px;
+  margin-top: 3px;
+  border-radius: var(--r-full);
+  background: var(--border);
+  overflow: hidden;
+}
+.downbar__bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width 900ms linear;
+}
+
+.downbar__icon {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--text-2);
+  font-size: 14px;
+  transition: background 160ms ease, color 160ms ease, transform var(--dur) var(--ease);
+}
+.downbar__icon:hover { background: var(--hover); color: var(--text); }
+.downbar__icon:active { transform: scale(0.9); }
+
+.downbar__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--r-full);
+  background: var(--bg-sunken);
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 160ms ease, color 160ms ease, transform var(--dur) var(--ease);
+}
+.downbar__pill:hover { background: var(--active); color: var(--text); }
+.downbar__pill:active { transform: scale(0.96); }
+.downbar__pill.is-live { color: var(--accent); background: var(--accent-soft); }
+.downbar__focus.is-on { background: var(--green); color: #fff; }
+
+.downbar__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+
+@media (max-width: 860px) {
+  .downbar { gap: 6px; padding: 0 8px; }
+  .downbar__music { width: auto; flex: 1; }
+  .downbar__artist, .downbar__next { display: none; }
+  .downbar__pill-label { display: none; }
+  .downbar__pill { padding: 0 11px; }
+  .downbar__links { display: none; }
+}
+
+/* Focus mode keeps the downbar but quiets it down. */
+.app.is-focus .downbar { background: transparent; border-top-color: transparent; }
